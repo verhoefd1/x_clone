@@ -1,0 +1,55 @@
+version: '3'
+
+services:
+  x_server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: node:latest
+    container_name: x_server
+    working_dir: /home/app
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - .:/home/app
+      - node_modules:/home/app/node_modules
+    expose:
+      - "8081"
+    ports:
+      - "80:8080"
+    command: npm run dev
+    networks:
+      - x_network
+    depends_on:
+      x_db:
+        condition: service_healthy
+  x_db:
+    image: mysql:latest
+    container_name: x_database
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=mdjdf-masle1-poasD9
+    volumes:
+      - ./dbdata:/data/db
+      - ./dbconfig:/docker-entrypoint-initdb.d
+    networks:
+      - x_network
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "--silent" ]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+networks:
+  x_network:
+    driver: bridge
+volumes:
+  dbconfig:
+  dbdata:
+  node_modules:
+  .:
+    # remove the .: for prod
+
+
+

@@ -1,0 +1,2 @@
+CREATE DATABASE x_db;
+USE DATABASE x_db;

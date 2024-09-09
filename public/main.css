@@ -1,0 +1,22 @@
+html {
+    background-color: black;
+}
+
+#happening_now {
+    color: white;
+}
+
+#index_logo {
+    width: 45%;
+}
+
+main {
+    display: flex;
+    flex: auto;
+    flex-direction: row-reverse;
+}
+
+section {
+    flex: content;
+    display: inline-flex;
+}

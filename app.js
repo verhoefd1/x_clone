@@ -41,6 +41,7 @@ app.get("/", function (req, res) {
 });
 
 
+
 //test connection to MYSQL
 app.connect((err) => {
     if (err) throw err;

@@ -4,18 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>X</title>
+    <title>X. It's what's happening / X</title>
     <link rel="stylesheet" type="text/css" href="/main.css">
 </head>
 
 <body>
     <main>
-        <section>
-            <h1 id="happening_now">Happening now</h1>
+        <section class="enter_container">
+            <div class="index_section">
+                <h1 class="white_text" id="happening_now">Happening now</h1>
+                <div class="index_items">
+                    <div>
+                        <div id="div_join">
+                            <h3 class="white_text" id="join_now">Join today.</h3>
+                            <button class="index_button">Sign up with Google</button>
+                            <button class="index_button">Sign up with Apple</button>
+                        </div>
+                        <div class="inline_div white_text">
+                            <div class="divider"></div>
+                            <p id="or">or</p>
+                            <div class="divider"></div>
+                        </div>
+                        <div>
+                            <button class="btn-blue index_button">Create account</button>
+                            <p class="terms">By signing up, you agree to the Terms of Service, Privacy
+                                Policy,
+                                including Cookie Use.</p>
+                        </div>
+                        <div>
+                            <h5 class="white_text">Already have an account?</h5>
+                            <button class="btn-signin index_button">Sign in</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
-        <section class="right-side">
+        <section class="logo_container">
             <img src="/assets/logo.png" alt="" id="index_logo">
         </section>
+        <div id="modal-signin" class="modal"></div>
+        <div id="modal-create-account" class="modal"></div>
     </main>
 </body>
 

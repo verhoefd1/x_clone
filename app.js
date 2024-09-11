@@ -40,8 +40,6 @@ app.get("/", function (req, res) {
     res.render("index");
 });
 
-
-
 //test connection to MYSQL
 app.connect((err) => {
     if (err) throw err;

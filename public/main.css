@@ -125,8 +125,75 @@ button {
     transition: .5s;
 }
 
-.modal {}
 
-#modal-create-account {}
+.modal {
+
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    /* overflow: auto; */
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(29, 155, 240, 0.2);
+    /* Black w/ opacity */
+}
+
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 1);
+    margin: 20% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border-radius: 2rem;
+    max-height: 90vh;
+    max-width: 80vh;
+    z-index: 2;
+    /* Could be more or less, depending on screen size */
+}
+
+.modal-header {
+    text-align: center;
+}
+
+.close {
+    float: left;
+    font-size: 2rem;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-subcontent {
+    text-align: left;
+
+}
+
+.modal-logo {
+    height: 30px;
+    align-self: center;
+}
+
+#modal-create {
+    display: none;
+}
 
 #modal-signin {}

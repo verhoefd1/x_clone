@@ -3,12 +3,14 @@ USE DATABASE x_db;
 
 CREATE TABLE users (
     id CHAR(36) PRIMARY KEY,
+    user_pic INT NOT NULL,
     name VARCHAR(60) NOT NULL,
     email VARCHAR(60) NOT NULL,
     password CHAR(255) NOT NULL,
     dob DATE NOT NULL,
     created_at TIMESTAMP DEFAULT NOW(),
-    updated_at TIMESTAMP DEFAULT NOW() ON UPDATE NOW()
+    updated_at TIMESTAMP DEFAULT NOW() ON UPDATE NOW(),
+    FOREIGN KEY (user_pic) REFERENCES images(id)
 );
 
 CREATE TABLE posts (
@@ -61,6 +63,11 @@ CREATE TABLE comments (
     PRIMARY KEY (commenter_id, comment), 
     FOREIGN KEY (post_id) REFERENCES posts(id),
     FOREIGN KEY (commenter_id) REFERENCES users(id)
+);
+
+-- hashtag table to get categories?
+CREATE TABLE hashtags (
+
 );
 
 -- Need something to handle comments on comments or just keep it one level? 

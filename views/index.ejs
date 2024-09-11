@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>X. It's what's happening / X</title>
-    <link rel="stylesheet" type="text/css" href="/main.css">
-</head>
-
-<body>
+<%- include("./partials/header.ejs");%>
     <main>
         <section class="enter_container">
             <div class="index_section">
@@ -26,7 +16,7 @@
                             <div class="divider"></div>
                         </div>
                         <div>
-                            <button class="btn-blue index_button">Create account</button>
+                            <button class="btn-blue index_button" id="btn-create">Create account</button>
                             <p class="terms">By signing up, you agree to the Terms of Service, Privacy
                                 Policy,
                                 including Cookie Use.</p>
@@ -42,9 +32,29 @@
         <section class="logo_container">
             <img src="/assets/logo.png" alt="" id="index_logo">
         </section>
-        <div id="modal-signin" class="modal"></div>
-        <div id="modal-create-account" class="modal"></div>
+        <div id="modal-create" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close white_text">&times;</span>
+                    <img class="modal-logo" src="/assets/logo.png" alt="">
+                </div>
+                <div class="modal-subcontent">
+                    <h3 class="white_text">Create your account</h3>
+                    <form action="/register" method="POST">
+                        <input type="text" placeholder="Name" name="name" required>
+                        <input type="text" placeholder="Email" name="email" required>
+                        <p>Use phone instead</p>
+                        <h5 class="white_text">Date of birth</h5>
+                        <p class="white_text">This will not be shown publicly. Confirm your own age, even if this
+                            account is
+                            for a business, a pet, or something else.</p>
+                        <input type="date" placeholder="Date of Birth" name="date_of_birth" required>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- <div id="modal-create-account" class="modal"></div> -->
     </main>
-</body>
+    </body>
 
-</html>
+    </html>

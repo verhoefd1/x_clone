@@ -1,3 +1,4 @@
+//NODE SERVER SET UP SECTION ----------------------------------------------------------------------------------------------------------------------
 const
     express = require("express"),
     app = express(),
@@ -36,9 +37,39 @@ const db = mysql.createConnection({
     database: 'x_db'
 });
 
+//END NODE SERVER SET UP SECTION ----------------------------------------------------------------------------------------------------------------------
+//POST ROUTE FUNCTIONS --------------------------------------------------------------------------------------------------------------------------------
+// Function to generate and return a unique user ID
+const generateUserId = (callback) => {
+    db.query('SELECT UUID() AS user_id', (err, results) => {
+        if (err) throw err;             // Throw an error if the query fails
+        console.log(results[0].user_id);
+        callback(results[0].user_id);        // Call the callback function with the generated UUID
+    });
+};
+// Password validation function
+const validatePassword = (password) => {
+    // Regular expression to enforce the password policy
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return regex.test(password);
+};
+//END POST ROUTE FUNCTIONS ----------------------------------------------------------------------------------------------------------------------------
+// INDEX ROUTE
 app.get("/", function (req, res) {
-    res.render("index");
+    document = req.body;
+    res.render("index", { document: document });
 });
+
+// USER ROUTES
+app.post("/register", async (req, res) => {
+    const { name, email, dateofbirth, password } = req.body;
+    if (!validatePassword(password)) {
+        return res.render("signup", { pass_err: 'bad_pass', site: "signup" });
+        // return res.status(400).send('Password must be at least 8 characters long, include at least one lowercase letter, one uppercase letter, one digit, and one special character.');
+    };
+
+})
+
 
 //test connection to MYSQL
 app.connect((err) => {
